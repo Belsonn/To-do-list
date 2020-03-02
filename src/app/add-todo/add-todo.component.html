@@ -1,0 +1,13 @@
+<div class="container">
+    <form>
+        <div class="form-group">
+            <input name= "title" type="text" id="title" placeholder="Co masz zrobić?" class="form-control" [(ngModel)]="title">
+        </div>
+    </form>
+    <button type="submit" class="btn btn-primary" (click)=onAdd()>Dodaj</button>
+    <ul class="list-group">
+        <li *ngFor="let todo of todos" class="list-group">{{todo.title}}
+            <span>{{todo.createDate | date:'longDate'}} </span>
+        </li>
+    </ul>
+</div>
