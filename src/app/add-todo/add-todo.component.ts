@@ -1,21 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { Todo } from './../shared/todo.class'
+import { Component, OnInit } from "@angular/core";
+import { Todo } from "./../shared/todo.class";
 @Component({
-  selector: 'app-add-todo',
-  templateUrl: './add-todo.component.html',
-  styleUrls: ['./add-todo.component.scss']
+  selector: "app-add-todo",
+  templateUrl: "./add-todo.component.html",
+  styleUrls: ["./add-todo.component.scss"]
 })
 export class AddTodoComponent implements OnInit {
-  todos: Todo[] = [new Todo('chuja')];
+  todos: Todo[] = [new Todo("chuja")];
   title = "";
+  category: string;
 
-  constructor() { }
 
-  ngOnInit(): void {
-  }
+  constructor() {}
+
+  ngOnInit(): void {}
   onAdd() {
-    let todo = new Todo(this.title);
-    console.log(todo);
-    this.todos.push(todo);
+    if (this.title !== "") {
+      let todo = new Todo(this.title);
+      console.log(todo);
+      this.todos.push(todo);
+    }
   }
 }

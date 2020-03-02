@@ -1,13 +1,77 @@
 <div class="container">
-    <form>
-        <div class="form-group">
-            <input name= "title" type="text" id="title" placeholder="Co masz zrobić?" class="form-control" [(ngModel)]="title">
+  <form>
+    <div class="form-group">
+      <input
+        name="title"
+        type="text"
+        id="title"
+        placeholder="Co masz zrobić?"
+        class="form-control"
+        (keydown.enter)="onAdd()"
+        [(ngModel)]="title"
+      />
+    </div>
+  </form>
+  <div class="row">
+    <div class="col-3">
+      <button type="submit" class="btn btn-primary mb-3" (click)="onAdd()">
+        Dodaj
+      </button>
+    </div>
+    <!-- <div class="col-3">
+      <div class="custom-control custom-radio">
+        <input
+          type="radio"
+          id="customRadio1"
+          name="customRadio"
+          class="custom-control-input"
+        />
+        <label class="custom-control-label" for="customRadio1">Życie prywatne</label>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="custom-control custom-radio">
+        <input
+          type="radio"
+          id="customRadio2"
+          name="customRadio"
+          class="custom-control-input"
+        />
+        <label class="custom-control-label" for="customRadio2">
+          Szkoła
+        </label>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="custom-control custom-radio">
+        <input
+          type="radio"
+          id="customRadio3"
+          name="customRadio"
+          class="custom-control-input"
+
+        />
+        <label class="custom-control-label" for="customRadio3" >Praca</label>
+      </div>
+    </div> -->
+  </div>
+  <div
+    *ngFor="let todo of todos; even as isEven"
+    [ngClass]="{ 'bg-even': isEven }"
+    class="todo"
+  >
+    <div class="title">
+      <input type="checkbox" class="checkbox" [(ngModel)]="todo.completed" />
+      <h4>{{ todo.title }}</h4>
+    </div>
+    <div class="row">
+      <div class="col-6 hour">{{ todo.createDate | date: "longDate" }} </div>
+      <div class="col-6 items">
+        <div class="item">
+            {{life}}
         </div>
-    </form>
-    <button type="submit" class="btn btn-primary" (click)=onAdd()>Dodaj</button>
-    <ul class="list-group">
-        <li *ngFor="let todo of todos" class="list-group">{{todo.title}}
-            <span>{{todo.createDate | date:'longDate'}} </span>
-        </li>
-    </ul>
+        <div class="item">Test</div>
+      </div>
+    </div>
+  </div>
 </div>
