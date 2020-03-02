@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddTodoComponent } from './add-todo/add-todo.component';
 import { SingleNoteComponent } from './single-note/single-note.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddTodoComponent,
-    SingleNoteComponent
+    SingleNoteComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
