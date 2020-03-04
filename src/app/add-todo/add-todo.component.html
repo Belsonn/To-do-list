@@ -18,21 +18,44 @@
         Dodaj
       </button>
     </div>
-    <div class="col-3"><div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" [(ngModel)]="life"
-      [ngModelOptions]="{standalone: true}" id="customCheck1">
-      <label class="custom-control-label" for="customCheck1">Życie prywatne</label>
-    </div></div>
-    <div class="col-3"><div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" [(ngModel)]="work"
-      [ngModelOptions]="{standalone: true}" id="customCheck2">
-      <label class="custom-control-label" for="customCheck2">Praca</label>
-    </div></div>
-    <div class="col-3"><div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" [(ngModel)]="school"
-      [ngModelOptions]="{standalone: true}" id="customCheck3">
-      <label class="custom-control-label" for="customCheck3">Szkoła</label>
-    </div></div>
+    <div class="col-3">
+      <div class="custom-control custom-checkbox">
+        <input
+          type="checkbox"
+          class="custom-control-input"
+          [(ngModel)]="life"
+          [ngModelOptions]="{ standalone: true }"
+          id="customCheck1"
+        />
+        <label class="custom-control-label" for="customCheck1"
+          >Życie prywatne</label
+        >
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="custom-control custom-checkbox">
+        <input
+          type="checkbox"
+          class="custom-control-input"
+          [(ngModel)]="work"
+          [ngModelOptions]="{ standalone: true }"
+          id="customCheck2"
+        />
+        <label class="custom-control-label" for="customCheck2">Praca</label>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="custom-control custom-checkbox">
+        <input
+          type="checkbox"
+          class="custom-control-input"
+          [(ngModel)]="school"
+          [ngModelOptions]="{ standalone: true }"
+          id="customCheck3"
+        />
+        <label class="custom-control-label" for="customCheck3">Szkoła</label>
+      </div>
+    </div>
     <!-- <div class="col-3">
       <div class="custom-control custom-radio">
         <input
@@ -90,8 +113,14 @@
         <button class="btn btn-danger btn-delete">
           <i class="fa fa-trash" aria-hidden="true"></i>
         </button>
-        <div *ngFor="let item of todo.items" class="item">{{ item }}</div>
-        <div *ngIf="todo.items.length==0" class="item">Inne</div>
+        <div
+          *ngFor="let item of todo.items"
+          class="item"
+          [ngClass]="{ 'item--work': item == 'Praca', 'item--school': item == 'Szkoła','item--life': item == 'Życie prywatne' }"
+        >
+          {{ item }}
+        </div>
+        <div *ngIf="todo.items.length == 0" class="item">Inne</div>
       </div>
     </div>
   </div>
