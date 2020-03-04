@@ -18,6 +18,21 @@
         Dodaj
       </button>
     </div>
+    <div class="col-3"><div class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" [(ngModel)]="life"
+      [ngModelOptions]="{standalone: true}" id="customCheck1">
+      <label class="custom-control-label" for="customCheck1">Życie prywatne</label>
+    </div></div>
+    <div class="col-3"><div class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" [(ngModel)]="work"
+      [ngModelOptions]="{standalone: true}" id="customCheck2">
+      <label class="custom-control-label" for="customCheck2">Praca</label>
+    </div></div>
+    <div class="col-3"><div class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" [(ngModel)]="school"
+      [ngModelOptions]="{standalone: true}" id="customCheck3">
+      <label class="custom-control-label" for="customCheck3">Szkoła</label>
+    </div></div>
     <!-- <div class="col-3">
       <div class="custom-control custom-radio">
         <input
@@ -56,21 +71,27 @@
     </div> -->
   </div>
   <div
-    *ngFor="let todo of todos; even as isEven"
+    *ngFor="let todo of todos; index as i; even as isEven"
     [ngClass]="{ 'bg-even': isEven }"
     class="todo"
   >
     <div class="title">
-      <input type="checkbox" class="checkbox" [(ngModel)]="todo.completed" />
+      <input
+        type="checkbox"
+        class="checkbox"
+        [(ngModel)]="todo.completed"
+        (change)="checkboxChangeHandler(i)"
+      />
       <h4>{{ todo.title }}</h4>
     </div>
     <div class="row">
-      <div class="col-6 hour">{{ todo.createDate | date: "longDate" }} </div>
-      <div class="col-6 items">
-        <div class="item">
-            {{life}}
-        </div>
-        <div class="item">Test</div>
+      <div class="col-4 hour">{{ todo.createDate | date: "longDate" }}</div>
+      <div class="col-8 items">
+        <button class="btn btn-danger btn-delete">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </button>
+        <div *ngFor="let item of todo.items" class="item">{{ item }}</div>
+        <div *ngIf="todo.items.length==0" class="item">Inne</div>
       </div>
     </div>
   </div>

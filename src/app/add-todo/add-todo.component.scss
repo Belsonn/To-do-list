@@ -1,43 +1,67 @@
 .container {
-    margin-top: 5rem;
-
+  margin-top: 5rem;
 }
-.title{
-    display: flex;
-    text-align: center;
-    .checkbox {
-        margin: 7px 10px 0 0;
-        width: 20px;
-        height: 20px;
-    }
+.title {
+  display: flex;
+  text-align: center;
+  .checkbox {
+    margin: 7px 10px 0 0;
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .hour {
-    color: #aaa;
+  color: #aaa;
 }
 
 .items {
-    display: flex;
-    flex-direction: row-reverse;
-    margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: right;
+  flex-direction: row-reverse;
+  margin-bottom: 0.5rem;
+  
 }
-.item{
-    margin: 0 1rem;
-    color: #fff;
-    background-color: #a14f12;
-    padding: 0.2rem 0.5rem;
-    border-radius: 1rem;
-    width: 100px;
-    text-align: center;
+.item {
+  margin: 0 1rem;
+  color: #fff;
+  background-color: #a14f12;
+  padding: 0.3rem 0.5rem;
+  border-radius: 1rem;
+  height: 40px;
+  text-align: center;
+  transition: all 0.1s ease-in;
+  padding-top: 7px;
 }
-.bg-even{
-    background-color: #ebeff0;
+.bg-even {
+  background-color: #ebeff0 !important;
 }
 
 .todo {
-    border-radius: 10px;
-    padding: 1rem;
-    &:first-child{
-        margin-top: 0.5rem;
-    }
+  border-radius: 10px;
+  padding: 1rem;
+  background-color: #fcfcfc;
+  &:first-child {
+    margin-top: 0.5rem;
+  }
+  &:hover .btn-delete {
+    display: block;
+    transform: translateX(-30px);
+  }
+  &:hover .item {
+      transform: translateX(-40px);
+  }
+}
+
+.btn-delete {
+  display: none;
+  transform: translate3d(30px, -50px, 0);
+  text-decoration: none;
+  border-color: transparent;
+  border-radius: 50%;
+  color: #fff;
+  transition: all 0.2s ease-in;
+  &:hover {
+      background-color: #871d16;
+  }
 }
