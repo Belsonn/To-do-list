@@ -1,15 +1,30 @@
-<div class="container">
-<div class="title">
-    <input type="checkbox" class="checkbox">
-    <h4>Muszę coś zrobić</h4>
-</div>
-<div class="row">
-    <div class="col-6 hour">16:50</div>
-    <div class="col-6 items">
-        <div class="item">
-            Chuj
-        </div>
-        <div class="item">Kurwa</div>
+<div class="todo">
+  <div class="title">
+    <input type="checkbox" class="checkbox" />
+    <!-- (change)="checkboxChangeHandler()" -->
+    <!-- [(ngModel)]="todo.completed" -->
+    <h4>{{ title }}</h4>
+  </div>
+  <div class="row">
+    <div class="col-4 hour">{{ createDate | date: "longDate" }}</div>
+    <div class="col-8 items">
+      <button class="btn btn-danger btn-delete">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      </button>
+
+      <div
+        class="item"
+        *ngFor="let item of items"
+        [ngClass]="{
+          'item--work': item == 'Praca',
+          'item--school': item == 'Szkoła',
+          'item--life': item == 'Życie prywatne'
+        }"
+      >
+        {{ item }}
+      </div>
+
+      <div *ngIf="items.length == 0" class="item">Inne</div>
     </div>
-</div>
+  </div>
 </div>

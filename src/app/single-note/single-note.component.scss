@@ -1,31 +1,64 @@
-.container{
-    background-color: #f3f3f3;
-}
-.title{
+.title {
     display: flex;
     text-align: center;
     .checkbox {
-        margin: 7px 10px 0 0;
-        width: 20px;
-        height: 20px;
+      margin: 7px 10px 0 0;
+      width: 20px;
+      height: 20px;
     }
-}
-
-.hour {
+  }
+  
+  .hour {
     color: #aaa;
-}
-
-.items {
+  }
+  
+  .items {
     display: flex;
+    justify-content: right;
     flex-direction: row-reverse;
     margin-bottom: 0.5rem;
-}
-.item{
+    
+  }
+  .item {
     margin: 0 1rem;
     color: #fff;
     background-color: #a14f12;
-    padding: 0.2rem 0.5rem;
+    padding: 0.3rem 0.5rem;
     border-radius: 1rem;
-    width: 100px;
+    height: 40px;
     text-align: center;
-}
+    transition: all 0.1s ease-in;
+    padding-top: 7px;
+    &--work{
+      background-color: #307fc9;
+    }
+    &--school{
+      background-color: #8ee66c;
+    }
+    &--life{
+        background-color: #e3325e;
+    }
+  }
+  
+  .todo{
+    &:hover .btn-delete {
+      display: block;
+      transform: translateX(-30px);
+    }
+    &:hover .item {
+        transform: translateX(-40px);
+    }
+  }
+  
+  .btn-delete {
+    display: none;
+    text-decoration: none;
+    border-color: transparent;
+    border-radius: 50%;
+    color: #fff;
+    transition: all 0.2s ease-in;
+    &:hover {
+        background-color: #871d16;
+    }
+  }
+  

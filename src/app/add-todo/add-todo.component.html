@@ -56,72 +56,12 @@
         <label class="custom-control-label" for="customCheck3">Szkoła</label>
       </div>
     </div>
-    <!-- <div class="col-3">
-      <div class="custom-control custom-radio">
-        <input
-          type="radio"
-          id="customRadio1"
-          name="customRadio"
-          class="custom-control-input"
-        />
-        <label class="custom-control-label" for="customRadio1">Życie prywatne</label>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="custom-control custom-radio">
-        <input
-          type="radio"
-          id="customRadio2"
-          name="customRadio"
-          class="custom-control-input"
-        />
-        <label class="custom-control-label" for="customRadio2">
-          Szkoła
-        </label>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="custom-control custom-radio">
-        <input
-          type="radio"
-          id="customRadio3"
-          name="customRadio"
-          class="custom-control-input"
-
-        />
-        <label class="custom-control-label" for="customRadio3" >Praca</label>
-      </div>
-    </div> -->
   </div>
   <div
-    *ngFor="let todo of todos; index as i; even as isEven"
+    *ngFor="let note of notes; even as isEven"
     [ngClass]="{ 'bg-even': isEven }"
-    class="todo"
+    class="list"
   >
-    <div class="title">
-      <input
-        type="checkbox"
-        class="checkbox"
-        [(ngModel)]="todo.completed"
-        (change)="checkboxChangeHandler(i)"
-      />
-      <h4>{{ todo.title }}</h4>
-    </div>
-    <div class="row">
-      <div class="col-4 hour">{{ todo.createDate | date: "longDate" }}</div>
-      <div class="col-8 items">
-        <button class="btn btn-danger btn-delete">
-          <i class="fa fa-trash" aria-hidden="true"></i>
-        </button>
-        <div
-          *ngFor="let item of todo.items"
-          class="item"
-          [ngClass]="{ 'item--work': item == 'Praca', 'item--school': item == 'Szkoła','item--life': item == 'Życie prywatne' }"
-        >
-          {{ item }}
-        </div>
-        <div *ngIf="todo.items.length == 0" class="item">Inne</div>
-      </div>
-    </div>
+  <app-single-note [title] = "note.title" [items] = "note.items" [createDate] = "note.createDate"></app-single-note>
   </div>
 </div>
