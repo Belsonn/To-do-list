@@ -32,6 +32,15 @@
   text-align: center;
   transition: all 0.1s ease-in;
   padding-top: 7px;
+  &--work{
+    background-color: #307fc9;
+  }
+  &--school{
+    background-color: #8ee66c;
+  }
+  &--life{
+      background-color: #e3325e;
+  }
 }
 .bg-even {
   background-color: #ebeff0 !important;
@@ -55,7 +64,6 @@
 
 .btn-delete {
   display: none;
-  transform: translate3d(30px, -50px, 0);
   text-decoration: none;
   border-color: transparent;
   border-radius: 50%;
