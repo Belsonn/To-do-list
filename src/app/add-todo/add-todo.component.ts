@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { TodoDataService } from "./../shared/todoData.service";
 import { Todo } from "./../shared/todo.class";
+import { LocalStorageService } from "./../shared/localStorage.service";
 @Component({
   selector: "app-add-todo",
   templateUrl: "./add-todo.component.html",
@@ -12,21 +12,18 @@ export class AddTodoComponent implements OnInit {
   life: boolean;
   work: boolean;
   school: boolean;
-  constructor(private todoDataService: TodoDataService) {}
+  constructor(private localStorageService : LocalStorageService) {}
 
   ngOnInit(): void {
-    this.todos = this.todoDataService.todos;
+    //this.todos = this.todoDataService.todos;
+    this.localStorageService.getLocal();
+    this.todos = this.localStorageService.todos;
   }
   onAdd() {
     if (this.title != "") {
-      this.todoDataService.addTodo(
+      this.localStorageService.addTodo(
         new Todo(this.title, this.life, this.work, this.school)
       );
     }
-  }
-  onCompleteNote(index) {
-    // let note = this.notes[index];
-    // this.notes.splice(index, 1);
-    // this.noteCompleted.emit(note);
   }
 }

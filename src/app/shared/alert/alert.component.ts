@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Todo } from "../todo.class";
-import { TodoDataService } from "../todoData.service"
+import { LocalStorageService } from "../localStorage.service";
 @Component({
   selector: 'app-alert',
   templateUrl: './alert.component.html',
@@ -11,17 +11,17 @@ export class AlertComponent {
   @Input() index: number
   @Output() close = new EventEmitter<void>();
 
-  constructor(private todoDataService: TodoDataService) {}
+  constructor(private localStorageService : LocalStorageService) {}
   onClose() {
     this.close.emit();
   }
   onDelete() {
     if (!this.todo.completed) {
-      this.todoDataService.deleteTodo(this.index);
+      this.localStorageService.deleteTodo(this.index);
       this.close.emit();
     }
     else if(this.todo.completed){
-      this.todoDataService.deleteCompletedTodo(this.index);
+      this.localStorageService.deleteCompletedTodo(this.index);
       this.close.emit();
     }
 

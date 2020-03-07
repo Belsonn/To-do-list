@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SingleNoteComponent } from "./../single-note/single-note.component";
-import { TodoDataService } from './../shared/todoData.service';
 import { Todo } from "./../shared/todo.class";
+import { LocalStorageService } from "./../shared/localStorage.service";
 @Component({
   selector: 'app-completed',
   templateUrl: './completed.component.html',
@@ -10,9 +9,10 @@ import { Todo } from "./../shared/todo.class";
 export class CompletedComponent implements OnInit{
   todos: Todo[] = [];
 
-  constructor(private todoDataService: TodoDataService) { }
+  constructor(private localStorageService : LocalStorageService) { }
   ngOnInit() {
-    this.todos = this.todoDataService.completeTodos
+    this.localStorageService.getLocal();
+    this.todos = this.localStorageService.completeTodos
   }
 
 
