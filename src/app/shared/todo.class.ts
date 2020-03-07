@@ -1,13 +1,17 @@
 export class Todo {
     title: string
-    completed: boolean
+    completed: boolean;
+    work: boolean;
+    school: boolean;
+    life: boolean;
     createDate
     completeDate
-    items: String[]
-    constructor(title) {
+    constructor(title, life, work, school) {
         this.title = title,
+        this.life = life,
+        this.work = work,
+        this.school = school;
         this.createDate = Date.now();
-        this.items = [];
     }
 
 }

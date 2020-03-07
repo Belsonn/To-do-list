@@ -1,5 +1,4 @@
-<div class="container">
-  <form>
+<form>
     <div class="form-group">
       <input
         name="title"
@@ -58,10 +57,12 @@
     </div>
   </div>
   <div
-    *ngFor="let note of notes; even as isEven"
+    *ngFor="let todo of todos;index as i; even as isEven"
     [ngClass]="{ 'bg-even': isEven }"
     class="list"
   >
-  <app-single-note [title] = "note.title" [items] = "note.items" [createDate] = "note.createDate"></app-single-note>
+    <app-single-note
+      [todo] = "todo"
+      [index]="i"
+    ></app-single-note>
   </div>
-</div>

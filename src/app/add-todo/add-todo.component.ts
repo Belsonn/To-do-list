@@ -1,44 +1,32 @@
 import { Component, OnInit } from "@angular/core";
+import { TodoDataService } from "./../shared/todoData.service";
 import { Todo } from "./../shared/todo.class";
-import { SingleNoteComponent } from "./../single-note/single-note.component";
 @Component({
   selector: "app-add-todo",
   templateUrl: "./add-todo.component.html",
   styleUrls: ["./add-todo.component.scss"]
 })
 export class AddTodoComponent implements OnInit {
-  notes: SingleNoteComponent[] = [];
-  todos: Todo[] = [new Todo("Coś do zrobienia")];
-  completeTodo: Todo[] = [];
-  title = "";
-  category: string;
-  life:boolean;
-  work:boolean;
-  school:boolean;;
-  constructor() {}
+  todos: Todo[] = [];
+  title: string;
+  life: boolean;
+  work: boolean;
+  school: boolean;
+  constructor(private todoDataService: TodoDataService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.todos = this.todoDataService.todos;
+  }
   onAdd() {
     if (this.title !== "") {
-      let todo = new SingleNoteComponent();
-      todo.title = this.title;
-      if(this.life) {
-        todo.items.push("Życie prywatne");
-      }
-      if(this.work) {
-        todo.items.push("Praca");
-      }
-      if(this.school) {
-        todo.items.push("Szkoła");
-      }
-      todo.createDate = new Date();
-      this.notes.push(todo);
+      this.todoDataService.addTodo(
+        new Todo(this.title, this.life, this.work, this.school)
+      );
     }
   }
-  checkboxChangeHandler(i) {
-    let todo: Todo = this.todos[i];
-    this.todos.splice(i, 1);
-    todo.completeDate = Date.now();
-    this.completeTodo.push(todo);
+  onCompleteNote(index) {
+    // let note = this.notes[index];
+    // this.notes.splice(index, 1);
+    // this.noteCompleted.emit(note);
   }
 }

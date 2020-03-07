@@ -1,30 +1,19 @@
 <div class="todo">
   <div class="title">
-    <input type="checkbox" class="checkbox" />
-    <!-- (change)="checkboxChangeHandler()" -->
-    <!-- [(ngModel)]="todo.completed" -->
-    <h4>{{ title }}</h4>
+    <input type="checkbox" class="checkbox" (change)="checkboxChangeHandler()" />
+    <h4>{{ todo.title }}</h4>
   </div>
   <div class="row">
-    <div class="col-4 hour">{{ createDate | date: "longDate" }}</div>
+    <div class="col-4 hour">{{ todo.createDate | date: "longDate" }}   <span><i class="fa fa-circle"></i></span>   {{ todo.createDate | date: "mediumTime" }}</div>
     <div class="col-8 items">
-      <button class="btn btn-danger btn-delete">
+      <button class="btn btn-danger btn-delete" (click) = "onDelete()">
         <i class="fa fa-trash" aria-hidden="true"></i>
       </button>
 
-      <div
-        class="item"
-        *ngFor="let item of items"
-        [ngClass]="{
-          'item--work': item == 'Praca',
-          'item--school': item == 'Szkoła',
-          'item--life': item == 'Życie prywatne'
-        }"
-      >
-        {{ item }}
-      </div>
-
-      <div *ngIf="items.length == 0" class="item">Inne</div>
+      <div class="item item--work" *ngIf="todo.work">Praca</div>
+      <div class="item item--school" *ngIf="todo.school">Szkoła</div>
+      <div class="item item--life" *ngIf="todo.life">Życie prywatne</div>
+      <div *ngIf="!todo.work&&!todo.school&&!todo.life" class="item">Inne</div>
     </div>
   </div>
 </div>
