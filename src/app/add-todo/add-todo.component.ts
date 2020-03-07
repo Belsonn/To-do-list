@@ -8,7 +8,7 @@ import { Todo } from "./../shared/todo.class";
 })
 export class AddTodoComponent implements OnInit {
   todos: Todo[] = [];
-  title: string;
+  title: string = "";
   life: boolean;
   work: boolean;
   school: boolean;
@@ -18,7 +18,7 @@ export class AddTodoComponent implements OnInit {
     this.todos = this.todoDataService.todos;
   }
   onAdd() {
-    if (this.title !== "") {
+    if (this.title != "") {
       this.todoDataService.addTodo(
         new Todo(this.title, this.life, this.work, this.school)
       );

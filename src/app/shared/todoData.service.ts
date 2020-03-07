@@ -11,4 +11,14 @@ export class TodoDataService {
     deleteTodo(index: number){
         this.todos.splice(index, 1);
     }
+    completeTodo(index:number) {
+        let todo = this.todos[index];
+        todo.completed = true;
+        todo.completeDate = Date.now();
+        this.todos.splice(index, 1);
+        this.completeTodos.push(todo);
+    }
+    deleteCompletedTodo(index: number){
+        this.completeTodos.splice(index, 1);
+    }
 }

@@ -1,0 +1,13 @@
+<h1 *ngIf="todos.length>0">Ukończone zadania</h1>
+<h1 *ngIf="todos.length==0">Brak ukończonych zadań :( </h1>
+
+<div
+    *ngFor="let todo of todos;index as i; even as isEven"
+    [ngClass]="{ 'bg-even': isEven }"
+    class="list"
+  >
+    <app-single-note
+      [todo] = "todo"
+      [index]="i"
+    ></app-single-note>
+  </div>
