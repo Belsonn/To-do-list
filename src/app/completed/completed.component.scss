@@ -1,0 +1,11 @@
+.bg-even {
+    background-color: #ebeff0 !important;
+  }
+  .list {
+    border-radius: 10px;
+    padding: 1rem;
+    background-color: #fcfcfc;
+    &:first-child {
+      margin-top: 0.5rem;
+    }
+}

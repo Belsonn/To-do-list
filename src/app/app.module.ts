@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { AddTodoComponent } from './add-todo/add-todo.component';
 import { SingleNoteComponent } from './single-note/single-note.component';
 import { HeaderComponent } from './header/header.component';
+import { CompletedComponent } from './completed/completed.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddTodoComponent,
     SingleNoteComponent,
-    HeaderComponent
+    HeaderComponent,
+    CompletedComponent
   ],
   imports: [
     BrowserModule,
